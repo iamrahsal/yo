@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1"> 
+		<title>IFM-Deploy</title>
+		<meta name="keywords" content="custom select, select style, javascript, inspiration, select element" />
+		<link rel="shortcut icon" href="img/favicon.ico">
+		<link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="css/cs-select.css" />
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="css/cs-skin-rotate.css" />
+		<link rel="stylesheet" href="css/drop.css"/>
+		<link rel="stylesheet" href="css/drop2.css"/>
+		<script src="js/drop.js"></script>
+		<script src="js/drop2.js"></script>
+		<script src="js/n.js"></script>
+		<script src="js/n1.js"></script>
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+		
+		
+		<style>
+		body{
+		background-color:#ECEFF1;
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+		}
+		  canvas {
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+    }
+		#head {
+	height: 65px;
+    width: 100%;
+
+    background-color: #546E7A;
+	float:top;
+	box-shadow: 0px 3px 10px #888888;
+	position: absolute;
+	right: 0;
+    top: 0;
+	} 
+		.chartb{
+		margin-left:30px;
+height:300px;
+width:500px;
+    padding: 10px 10px 20px 10px;
+    border: 2px solid;
+    box-shadow: 1px 1px 1px 1px;
+}
+	
+
+		</style>
+	</head>
+	<body >
+	<div class="m7">
+	<div id="head">
+	<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&#10006;</a>
+  <a href="#home" data-toggle="tab" class="smoothScroll">Home Page</a>
+  <a href="#">Search</a>
+  <a href="#">Deploy</a>
+  <a href="#">Settings</a>
+  <a href="#">Help</a>
+  <a href="#">About</a>
+</div>
+
+<span style="font-size:30px;cursor:pointer;position:absolute;left:0;padding-left: 10px;padding-top:10px;text-align:right;" class="oop" onclick="openNav()">&#9776;</span>
+	
+	
+	
+
+	<div class="dropdown">
+	  <button>You're a user</button>
+	  <ul id="dropdown-list">
+		<li><a href="">Admin</a></li>
+		<li><a href="">Acc Settings</a></li>
+		<li><a href="">Sign Out</a></li>
+	  </ul>
+	</div>
+	</div>
+			<div class="buttons">
+			<section id="yy">
+				<label class="select-label">Choose your Version</label>
+				<select class="cs-select cs-skin-rotate">
+					<option value="1">v2.0</option>
+					<option value="2">v3.0</option>
+					<option value="3">v4.0</option>
+					<option value="4">v5.0</option>
+					<option value="5">v6.0</option>
+				</select>
+
+			</section>
+			<div class="txt">
+							<div class="li">
+				<a href="#" class="lu"><strong>Deploy</strong></a></div>
+				<div class="li">
+				<a href="#" class="lu"><strong>Status</strong></a>
+			</div></div>
+			</div>
+				
+<div id="container" >
+        <canvas id="canvas"></canvas>
+    
+    <button id="randomizeData">Randomize Data</button>
+    <button id="addDataset">Add Dataset</button>
+    <button id="removeDataset">Remove Dataset</button>
+    <button id="addData">Add Data</button>
+    <button id="removeData">Remove Data</button>
+</div>
+</div>
+		<script src="js/classie.js"></script>
+		<script src="js/selectFx.js"></script>
+		<script>
+			(function() {
+				[].slice.call( document.querySelectorAll( 'select.cs-select' ) ).forEach( function(el) {	
+					new SelectFx(el);
+				} );
+			})();
+			 var Dropdown = (function($) {
+
+          var $body = $('body'),
+            $dropdown = $body.find('.dropdown'),
+            $trigger = $dropdown.find('button'),
+            $list = $dropdown.find('ul'),
+            $firstLink = $list.find('li:first a'),
+            $lastLink = $list.find('li:last a');
+
+          var init = function() {
+            ariaSetup();
+            bindEvents();
+          }
+
+          var ariaSetup = function() {
+            var listId = $list.attr('id');
+
+            $trigger.attr({
+              'aria-expanded': 'false',
+              'aria-controls': listId
+            });
+
+            $list.attr({
+              'aria-hidden': true
+            });
+          }
+
+          var bindEvents = function() {
+            $trigger.on('click', toggleDropdown);
+
+            $firstLink.on('keydown', function() {
+              if (event.which === 9 && event.shiftKey === false) {
+                return;
+              } else if (event.which === 9 && event.shiftKey === true) {
+                toggleDropdown();
+              }
+            });
+
+            $lastLink.on('keydown', function() {
+              if (event.shiftKey) return;
+              toggleDropdown();
+            });
+          }
+
+          var toggleDropdown = function() {
+            var hidden = $list.attr('aria-hidden') === 'true' ? false : true,
+              expanded = !hidden;
+
+            $trigger.attr('aria-expanded', expanded);
+            $list.attr('aria-hidden', hidden);
+          }
+
+          return {
+            init: init
+          }
+
+        })(jQuery);
+
+        Dropdown.init();
+		
+		
+var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+		</script>
+		<script>
+	 var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        var color = Chart.helpers.color;
+        var barChartData = {
+            labels: ["January", "February", "March", "April", "May", "June", "July"],
+            datasets: [{
+                label: 'Dataset 1',
+                backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
+                borderColor: window.chartColors.red,
+                borderWidth: 1,
+                data: [
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor()
+                ]
+            }, {
+                label: 'Dataset 2',
+                backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
+                borderColor: window.chartColors.blue,
+                borderWidth: 1,
+                data: [
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor()
+                ]
+            }]
+
+        };
+
+        window.onload = function() {
+            var ctx = document.getElementById("canvas").getContext("2d");
+            window.myBar = new Chart(ctx, {
+                type: 'bar',
+                data: barChartData,
+                options: {
+                    responsive: true,
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Chart.js Bar Chart'
+                    }
+                }
+            });
+
+        };
+
+        document.getElementById('randomizeData').addEventListener('click', function() {
+            var zero = Math.random() < 0.2 ? true : false;
+            barChartData.datasets.forEach(function(dataset) {
+                dataset.data = dataset.data.map(function() {
+                    return zero ? 0.0 : randomScalingFactor();
+                });
+
+            });
+            window.myBar.update();
+        });
+
+        var colorNames = Object.keys(window.chartColors);
+        document.getElementById('addDataset').addEventListener('click', function() {
+            var colorName = colorNames[barChartData.datasets.length % colorNames.length];;
+            var dsColor = window.chartColors[colorName];
+            var newDataset = {
+                label: 'Dataset ' + barChartData.datasets.length,
+                backgroundColor: color(dsColor).alpha(0.5).rgbString(),
+                borderColor: dsColor,
+                borderWidth: 1,
+                data: []
+            };
+
+            for (var index = 0; index < barChartData.labels.length; ++index) {
+                newDataset.data.push(randomScalingFactor());
+            }
+
+            barChartData.datasets.push(newDataset);
+            window.myBar.update();
+        });
+
+        document.getElementById('addData').addEventListener('click', function() {
+            if (barChartData.datasets.length > 0) {
+                var month = MONTHS[barChartData.labels.length % MONTHS.length];
+                barChartData.labels.push(month);
+
+                for (var index = 0; index < barChartData.datasets.length; ++index) {
+                    //window.myBar.addData(randomScalingFactor(), index);
+                    barChartData.datasets[index].data.push(randomScalingFactor());
+                }
+
+                window.myBar.update();
+            }
+        });
+
+        document.getElementById('removeDataset').addEventListener('click', function() {
+            barChartData.datasets.splice(0, 1);
+            window.myBar.update();
+        });
+
+        document.getElementById('removeData').addEventListener('click', function() {
+            barChartData.labels.splice(-1, 1); // remove the label first
+
+            barChartData.datasets.forEach(function(dataset, datasetIndex) {
+                dataset.data.pop();
+            });
+
+            window.myBar.update();
+        });
+</script>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="smoothscroll.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script> 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+	</body>
+</html>
